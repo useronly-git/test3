@@ -3,11 +3,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BOT_TOKEN = os.getenv("BOT_TOKEN")
-ADMIN_IDS = list(map(int, os.getenv("ADMIN_IDS", "").split(',')))
-WEBAPP_HOST = "0.0.0.0"
-WEBAPP_PORT = 8080
-WEBHOOK_URL = os.getenv("WEBHOOK_URL", "")
+BOT_TOKEN = os.getenv("BOT_TOKEN")  # токен бота
+WEBAPP_URL = os.getenv("WEBAPP_URL", "https://your-domain.com")  # URL mini app
+ADMIN_CHAT_ID = int(os.getenv("ADMIN_CHAT_ID", "0"))  # чат/группа для заказов
 
-# Database
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///coffee_shop.db")
+DB_PATH = os.getenv("DB_PATH", "coffee.db")
