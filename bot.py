@@ -1,9 +1,10 @@
 import json
 import asyncio
 import aiosqlite
+from datetime import datetime
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo, Message
 from config import BOT_TOKEN, STAFF_CHAT_ID
 
 bot = Bot(BOT_TOKEN)
@@ -34,7 +35,7 @@ async def start(msg: types.Message):
     kb = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(
             text="☕ Сделать заказ",
-            web_app=WebAppInfo(url="https://YOUR_DOMAIN/miniapp/index.html")
+            web_app=WebAppInfo(url="https://useronly-git.github.io/test3/miniapp/")
         )],
         [InlineKeyboardButton(text="👤 Профиль", callback_data="profile")],
         [InlineKeyboardButton(text="📦 Мои заказы", callback_data="orders")]
@@ -80,6 +81,47 @@ async def send_order_to_staff(order_id, text):
         [InlineKeyboardButton(text="📦 Выдан", callback_data=f"status_{order_id}_done")]
     ])
     await bot.send_message(STAFF_CHAT_ID, text, reply_markup=kb)
+
+@dp.message(lambda m: m.web_app_data is not None)
+async def webapp_order(message: Message):
+    data = json.loads(message.web_app_data.data)
+
+    items = data["items"]
+    order_type = data["type"]
+    order_time = data["time"]
+
+    total = sum(i["price"] * i["qty"] for i in items)
+
+    async with aiosqlite.connect(DB) as db:
+        await db.execute(
+            "INSERT OR IGNORE INTO users (user_id, name) VALUES (?, ?)",
+            (message.from_user.id, message.from_user.full_name)
+        )
+
+        cur = await db.execute(
+            "INSERT INTO orders (user_id, total, status, time) VALUES (?, ?, ?, ?)",
+            (message.from_user.id, total, "Новый", order_time)
+        )
+        order_id = cur.lastrowid
+        await db.commit()
+
+    text = (
+        f"☕ **Новый заказ #{order_id}**\n"
+        f"Тип: {order_type}\n"
+        f"Ко времени: {order_time}\n\n"
+    )
+
+    for i in items:
+        text += f"• {i['name']} × {i['qty']}\n"
+
+    text += f"\n💰 Итого: {total}₽"
+
+    await send_order_to_staff(order_id, text)
+
+    await message.answer(
+        f"✅ Заказ #{order_id} принят!\n"
+        f"Мы уведомим вас о статусе ☕"
+    )
 
 @dp.callback_query(lambda c: c.data.startswith("status_"))
 async def change_status(call: types.CallbackQuery):

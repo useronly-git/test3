@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Coffee</title>
-  <link rel="stylesheet" href="style.css">
-</head>
 <body>
-  <h1>☕ Кофейня</h1>
-  <div id="menu"></div>
+  <h1>☕ COFFEE LOFT</h1>
+
+  <div class="nav">
+    <button onclick="showMenu()">Меню</button>
+    <button onclick="showProfile()">Профиль</button>
+    <button onclick="showOrders()">Заказы</button>
+  </div>
+
+  <div id="content"></div>
+
   <button onclick="submitOrder()">Оформить заказ</button>
 
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <script src="app.js"></script>
 </body>
-</html>

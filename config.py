@@ -1,2 +1,2 @@
 BOT_TOKEN = "8444252351:AAEQmoc_APtMjlOVZaF8QxtnO_facApCzEk"
-STAFF_CHAT_ID = -5100471895  # чат или ЛС бариста
+STAFF_CHAT_ID =-5100471895  # чат или ЛС бариста
