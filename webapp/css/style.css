@@ -1,0 +1,25 @@
+body {
+  background: #f5efe6;
+  font-family: sans-serif;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: #3e2723;
+}
+
+header button {
+  color: white;
+  background: none;
+  border: none;
+}
+
+.card {
+  background: white;
+  margin: 10px;
+  border-radius: 12px;
+  padding: 10px;
+}
