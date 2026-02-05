@@ -1,0 +1,117 @@
+<!-- frontend/index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoffeeTime - Заказ кофе</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-mug-hot"></i>
+                <h1>CoffeeTime</h1>
+            </div>
+            <div class="cart-icon" id="cartIcon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </header>
+
+        <!-- Корзина (сайдбар) -->
+        <div class="cart-sidebar" id="cartSidebar">
+            <div class="cart-header">
+                <h2>Корзина</h2>
+                <button class="close-cart" id="closeCart">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Товары будут добавляться сюда -->
+            </div>
+            <div class="cart-total">
+                <span>Итого:</span>
+                <span id="cartTotal">0 руб.</span>
+            </div>
+            <button class="btn btn-primary btn-checkout" id="checkoutBtn">Оформить заказ</button>
+        </div>
+
+        <!-- Основной контент -->
+        <main class="main-content">
+            <!-- Категории -->
+            <div class="categories" id="categories">
+                <!-- Категории будут загружены через JS -->
+            </div>
+
+            <!-- Товары -->
+            <div class="products" id="products">
+                <!-- Товары будут загружены через JS -->
+            </div>
+
+            <!-- Модальное окно товара -->
+            <div class="modal" id="productModal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <div class="modal-body" id="modalBody">
+                        <!-- Содержимое модального окна -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Модальное окно оформления заказа -->
+            <div class="modal" id="checkoutModal">
+                <div class="modal-content checkout-modal">
+                    <span class="close-modal">&times;</span>
+                    <h2>Оформление заказа</h2>
+
+                    <div class="form-group">
+                        <label for="deliveryType">Тип получения:</label>
+                        <select id="deliveryType" class="form-control">
+                            <option value="pickup">С собой</option>
+                            <option value="dine_in">На месте</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="addressGroup">
+                        <label for="address">Адрес доставки/самовывоза:</label>
+                        <input type="text" id="address" class="form-control" placeholder="Укажите адрес">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="scheduledTime">Заказать ко времени:</label>
+                        <select id="scheduledTime" class="form-control">
+                            <option value="now">Как можно скорее</option>
+                            <option value="30min">Через 30 минут</option>
+                            <option value="1hour">Через 1 час</option>
+                            <option value="custom">Указать время</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="customTimeGroup" style="display: none;">
+                        <label for="customTime">Выберите время:</label>
+                        <input type="datetime-local" id="customTime" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Примечания к заказу:</label>
+                        <textarea id="notes" class="form-control" rows="3" placeholder="Особые пожелания..."></textarea>
+                    </div>
+
+                    <div class="order-summary">
+                        <h3>Итого к оплате: <span id="orderTotal">0</span> руб.</h3>
+                    </div>
+
+                    <button class="btn btn-primary btn-block" id="confirmOrder">Подтвердить заказ</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Уведомления -->
+        <div id="notification" class="notification"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

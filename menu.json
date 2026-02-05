@@ -1,0 +1,121 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Кофе",
+      "items": [
+        {
+          "id": 101,
+          "name": "Эспрессо",
+          "description": "Крепкий черный кофе",
+          "price": 150,
+          "image": "espresso.jpg",
+          "options": [
+            {
+              "name": "Размер",
+              "choices": ["Маленький", "Стандартный"]
+            },
+            {
+              "name": "Молоко",
+              "choices": ["Без молока", "Соевое", "Миндальное", "Обычное"]
+            }
+          ]
+        },
+        {
+          "id": 102,
+          "name": "Капучино",
+          "description": "Кофе с молочной пенкой",
+          "price": 200,
+          "image": "cappuccino.jpg"
+        },
+        {
+          "id": 103,
+          "name": "Латте",
+          "description": "Кофе с большим количеством молока",
+          "price": 220,
+          "image": "latte.jpg"
+        },
+        {
+          "id": 104,
+          "name": "Американо",
+          "description": "Разбавленный эспрессо",
+          "price": 170,
+          "image": "americano.jpg"
+        },
+        {
+          "id": 105,
+          "name": "Раф кофе",
+          "description": "Кофе со сливками и ванилью",
+          "price": 250,
+          "image": "raf.jpg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Десерты",
+      "items": [
+        {
+          "id": 201,
+          "name": "Тирамису",
+          "description": "Итальянский десерт",
+          "price": 280,
+          "image": "tiramisu.jpg"
+        },
+        {
+          "id": 202,
+          "name": "Чизкейк",
+          "description": "Классический Нью-Йорк",
+          "price": 260,
+          "image": "cheesecake.jpg"
+        },
+        {
+          "id": 203,
+          "name": "Круассан",
+          "description": "Свежая выпечка",
+          "price": 120,
+          "image": "croissant.jpg"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Напитки",
+      "items": [
+        {
+          "id": 301,
+          "name": "Горячий шоколад",
+          "description": "Густой горячий шоколад",
+          "price": 180,
+          "image": "hot_chocolate.jpg"
+        },
+        {
+          "id": 302,
+          "name": "Чай",
+          "description": "Различные сорта чая",
+          "price": 130,
+          "image": "tea.jpg",
+          "options": [
+            {
+              "name": "Сорт чая",
+              "choices": ["Черный", "Зеленый", "Фруктовый", "Травяной"]
+            }
+          ]
+        },
+        {
+          "id": 303,
+          "name": "Лимонад",
+          "description": "Освежающий лимонад",
+          "price": 160,
+          "image": "lemonade.jpg",
+          "options": [
+            {
+              "name": "Вкус",
+              "choices": ["Классический", "Малиновый", "Мятный", "Цитрусовый"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
